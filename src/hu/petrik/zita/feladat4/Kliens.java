@@ -27,14 +27,13 @@ public class Kliens {
                             "\n6: Kiválasztott megye holnapi adatainak kiírása" +
                             "\n7: Kilépés");
                     menu=sc.nextInt();
+
                     if (menu == 4 || menu == 5 || menu == 6) {
                         System.out.println("Kérem a nevét, hogy melyik megyét keresed: ");
                         m = sc.nextLine();
 
                         szervernek.writeUTF(m);
-                        szervernek.flush();
                     }
-
                     szervernek.writeInt(menu);
                     szervernek.flush();
 

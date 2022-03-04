@@ -18,7 +18,7 @@ public class Szerver {
                 Socket kapcsolat = socket.accept();
                 InetAddress ugyfel =kapcsolat.getInetAddress();
                 System.out.println("Ügyfél címe: "+ugyfel.getHostAddress());
-                UgyfelKicsolgalo uk = new UgyfelKicsolgalo(kapcsolat);
+                UgyfelKiszolgalo uk = new UgyfelKiszolgalo(kapcsolat);
                 exe.submit(uk);
             }
 
