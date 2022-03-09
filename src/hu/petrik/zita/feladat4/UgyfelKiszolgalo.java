@@ -21,7 +21,6 @@ public class UgyfelKiszolgalo implements Runnable{
 
             while(true) {
                 int menu;
-                String m;
                 do {
                     menu= ugyfeltol.readInt();
                     switch (menu){
@@ -30,9 +29,9 @@ public class UgyfelKiszolgalo implements Runnable{
                         case 3: ugyfelnek.writeUTF(holnapiMind()); break;
 
 
-                        case 4: ugyfelnek.writeUTF(egyMind(m=ugyfeltol.readUTF())); break;
-                        case 5: ugyfelnek.writeUTF(egyMai(m=ugyfeltol.readUTF())); break;
-                        case 6: ugyfelnek.writeUTF(egyHolnapi(m=ugyfeltol.readUTF())); break;
+                        case 4: ugyfelnek.writeUTF(egyMind(ugyfeltol.readUTF())); break;
+                        case 5: ugyfelnek.writeUTF(egyMai(ugyfeltol.readUTF())); break;
+                        case 6: ugyfelnek.writeUTF(egyHolnapi(ugyfeltol.readUTF())); break;
 
                         case 7: ugyfelnek.writeUTF("Kilépés...\n");
                     }
@@ -92,11 +91,12 @@ public class UgyfelKiszolgalo implements Runnable{
         String s="ajj4";
         for (Idojaras elorejelzes : elorejelzesek.values()){
             if (elorejelzes.getMegye().equals(m)) {
-                s = (elorejelzes.getMegye() +
-                        ":\n\t" + elorejelzes.getMai() +
-                        "\n\t" + elorejelzes.getHolnapi() + "\n");
+                s = ("\n"+elorejelzes.getMegye() +
+                        ":\n\tMai:\t" + elorejelzes.getMai() +
+                        "\n\tHolnapi:\t" + elorejelzes.getHolnapi() + "\n");
+                    return s;
             } else {
-               s= "Nincs ilyen megye az adatok között";
+               s= "Nincs ilyen megye az adatok között\n";
             }
         }
         return s;
@@ -106,10 +106,11 @@ public class UgyfelKiszolgalo implements Runnable{
         String s="ajj5";
         for (Idojaras elorejelzes : elorejelzesek.values()) {
             if (elorejelzes.getMegye().equals(m)) {
-                s = (elorejelzes.getMegye()+
+                s = ("\n"+elorejelzes.getMegye()+
                         ":\n\t"+elorejelzes.getMai()+"\n");
+                return s;
             }else {
-                s =  "Nincs ilyen megye az adatok között";
+                s =  "Nincs ilyen megye az adatok között\n";
             }
         }
         return s;
@@ -119,10 +120,11 @@ public class UgyfelKiszolgalo implements Runnable{
         String s="ajj6";
         for (Idojaras elorejelzes : elorejelzesek.values()) {
             if (elorejelzes.getMegye().equals(m)) {
-                s = (elorejelzes.getMegye()+
+                s = ("\n"+elorejelzes.getMegye()+
                         ":\n\t"+elorejelzes.getHolnapi()+"\n");
+                return s;
             }else {
-                s =  "Nincs ilyen megye az adatok között";
+                s =  "Nincs ilyen megye az adatok között\n";
             }
         }
         return s;

@@ -18,24 +18,26 @@ public class Kliens {
                 int menu;
                 String m;
                 do {
-                    System.out.println("Melyik menüpontot válassza: ");
-                    System.out.println("1: Minden adat kiírása" +
-                            "\n2: Mai adatok kiírása" +
-                            "\n3: Holnapi adatok kiírása" +
-                            "\n4: Kiválasztott megye kiírása" +
-                            "\n5: Kiválasztott megye mai adatainak kiírása" +
-                            "\n6: Kiválasztott megye holnapi adatainak kiírása" +
-                            "\n7: Kilépés");
-                    menu=sc.nextInt();
+                    System.out.println("\n\nMelyik menüpontot válassza:\n");
+                    System.out.println("\t1: Minden adat kiírása" +
+                            "\n\t2: Mai adatok kiírása" +
+                            "\n\t3: Holnapi adatok kiírása" +
+                            "\n\t4: Kiválasztott megye kiírása" +
+                            "\n\t5: Kiválasztott megye mai adatainak kiírása" +
+                            "\n\t6: Kiválasztott megye holnapi adatainak kiírása" +
+                            "\n\t7: Kilépés");
+                    menu=Integer.parseInt(sc.nextLine());
 
+                    szervernek.writeInt(menu);
+                    szervernek.flush();
                     if (menu == 4 || menu == 5 || menu == 6) {
                         System.out.println("Kérem a nevét, hogy melyik megyét keresed: ");
                         m = sc.nextLine();
 
                         szervernek.writeUTF(m);
+                        szervernek.flush();
                     }
-                    szervernek.writeInt(menu);
-                    szervernek.flush();
+
 
                     System.out.println(szervertol.readUTF());
                 }while (menu != 7);
